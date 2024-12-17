@@ -1,5 +1,5 @@
 # Use the latest Python LTS image as the base
-FROM python:3.11-slim
+FROM --platform=linux/amd64 python:3.11-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -21,7 +21,7 @@ WORKDIR /app
 # Install Python dependencies
 RUN pip install --no-cache-dir \
     cqkit \
-    git+https://github.com/CadQuery/cadquery.git
+    https://github.com/CadQuery/cadquery/archive/master.zip
 
 COPY . .
 RUN pip install .
